@@ -1,39 +1,41 @@
-import { useState } from 'react';
-import '../../../assets/css/features/expenses/create.css';
-import ExpenseForm from './partials/form';
-
-let formToggle, setFormToggle;
+import { useEffect, useState } from "react";
+import "../../../assets/css/features/expenses/create.css";
+import ExpenseForm from "./partials/form";
 
 const onClickExpense = (listener) => {};
+// let pushExpense;
 
 const Create = (props) => {
-  [formToggle, setFormToggle] = useState(true);
-
-  const eventListener = (xyz) => {};
-
+  const [formToggle, setFormToggle] = useState(true);
+  const { pushExpense } = props;
+  useEffect(() => {
+    newExpenseHandler()
+  })
   return (
     <div className="new-expense">
-      <ToggleFormDom />
+      <ToggleFormDom formToggle={formToggle} setFormToggle={setFormToggle} />
     </div>
   );
 };
-
 const newExpenseHandler = (data) => {
   data = { ...data, id: `e${Math.floor(Math.random() * 10).toString()}` };
-  // props.pushExpense(data);
+  //props.pushExpense(data);
 };
 
-const toggleHandler = (event) => {
-  console.log('Form Toggle: ', formToggle);
-  setFormToggle((prevState) => !prevState);
-};
-
-const ToggleFormDom = (formToggle) => {
+const ToggleFormDom = ({ formToggle, setFormToggle }) => {
+  const toggleHandler = (event) => {
+    console.log("Form Toggle: ", formToggle);
+    setFormToggle((prevState) => !prevState);
+  };
   console.log(formToggle);
-  return formToggle ? (
-    <button onClick={toggleHandler}> Add New Expense </button>
-  ) : (
-    <ExpenseForm OnClose={toggleHandler} onSave={newExpenseHandler} />
+  return (
+    <div>
+      {formToggle ? (
+        <button onClick={toggleHandler}> Add New Expense </button>
+      ) : (
+        <ExpenseForm OnClose={toggleHandler} onSave={newExpenseHandler} />
+      )}
+    </div>
   );
 };
 
