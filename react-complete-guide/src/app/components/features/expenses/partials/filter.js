@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import '../../../../assets/css/features/expenses/filter.css';
+import { useState } from "react";
+import "../../../../assets/css/features/expenses/filter.css";
 
 const ExpensesFilter = (props) => {
-  const [year, setYear] = useState('2022');
+  const [year, setYear] = useState("2022");
 
-  const setYearHandler = async (event) => {
-    await setYear(event.target.value);
+  const setYearHandler = (event) => {
+    setYear(event.target.value);
     return props.onChangeFilter({
       year: event.target.value,
     });

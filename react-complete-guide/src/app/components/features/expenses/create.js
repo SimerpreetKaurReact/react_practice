@@ -8,21 +8,29 @@ const onClickExpense = (listener) => {};
 const Create = (props) => {
   const [formToggle, setFormToggle] = useState(true);
   const { pushExpense } = props;
-  useEffect(() => {
-    newExpenseHandler()
-  })
+  const newExpenseHandler = (data) => {
+    let newdata = {
+      ...data,
+      id: `e${Math.floor(Math.random() * 10).toString()}`,
+    };
+    console.log("data", newdata);
+    props.pushExpense(newdata);
+  };
+  // useEffect(() => {
+  //   newExpenseHandler();
+  // });
   return (
     <div className="new-expense">
-      <ToggleFormDom formToggle={formToggle} setFormToggle={setFormToggle} />
+      <ToggleFormDom
+        formToggle={formToggle}
+        setFormToggle={setFormToggle}
+        newExpenseHandler={newExpenseHandler}
+      />
     </div>
   );
 };
-const newExpenseHandler = (data) => {
-  data = { ...data, id: `e${Math.floor(Math.random() * 10).toString()}` };
-  //props.pushExpense(data);
-};
 
-const ToggleFormDom = ({ formToggle, setFormToggle }) => {
+const ToggleFormDom = ({ formToggle, setFormToggle, newExpenseHandler }) => {
   const toggleHandler = (event) => {
     console.log("Form Toggle: ", formToggle);
     setFormToggle((prevState) => !prevState);
@@ -33,10 +41,11 @@ const ToggleFormDom = ({ formToggle, setFormToggle }) => {
       {formToggle ? (
         <button onClick={toggleHandler}> Add New Expense </button>
       ) : (
-        <ExpenseForm OnClose={toggleHandler} onSave={newExpenseHandler} />
+        <ExpenseForm onClose={toggleHandler} onSave={newExpenseHandler} />
       )}
     </div>
   );
 };
 
 export default Create;
+//lift state up for communicatiing between sibling components

@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import '../../../../assets/css/features/expenses/form.css';
+import { useState } from "react";
+import "../../../../assets/css/features/expenses/form.css";
 
 const Form = (props) => {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const [amount, setAmount] = useState(0);
   const [date, setDate] = useState(new Date().toISOString());
 
@@ -59,15 +59,16 @@ const Form = (props) => {
     const expense = {
       id: `e${Math.floor(Math.random() * 100).toString()}`,
       title: title,
-      amount: amount,
+      amount: +amount,
       date: new Date(date),
     };
     console.log(expense);
-    setTitle('');
+    setTitle("");
     setAmount(0);
     setDate(new Date());
     // Sending date to parent function (create.js)
     props.onSave(expense);
+    props.onClose();
   };
 
   return (
@@ -98,6 +99,9 @@ const Form = (props) => {
             value={date}
           />
         </div>
+      </div>
+      <div className="new-expense__actions">
+        <button onClick={props.onClose}>Cancel</button>
       </div>
       <div className="new-expense__actions">
         <button type="submit">Add Expense</button>

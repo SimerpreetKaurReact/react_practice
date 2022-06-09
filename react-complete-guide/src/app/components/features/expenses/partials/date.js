@@ -1,9 +1,10 @@
-import '../../../../assets/css/features/expenses/ExpenseDate.css';
+import "../../../../assets/css/features/expenses/ExpenseDate.css";
 
 const ExpenseDate = (props) => {
+  console.log(props);
   const { date } = props;
-  const month = date.toLocaleString('en-US', { month: 'long' });
-  const day = date.toLocaleString('en-US', { day: '2-digit' });
+  const month = date.toLocaleString("en-US", { month: "long" });
+  const day = date.toLocaleString("en-US", { day: "2-digit" });
   const year = date.getFullYear();
 
   return (
