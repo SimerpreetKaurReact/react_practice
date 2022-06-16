@@ -5,8 +5,8 @@ The fucntionality sequence is as follows for each individual poject
 2.
 3.
 4. Login_component: useEffect, debouncing for 500ms with useEffect
-5. useReducer:Simple login app with useReducer,useContext, with seperate custom context provider component,with custom input, button components
-6. food order app: another useReducer, useContext example
+5. useReducer:Simple login app with useReducer,useContext, with seperate custom context provider component,with custom input, button components,+ inputref example
+6. food order app: another useReducer, useContext,portals example
 
 Rules of Hooks
 

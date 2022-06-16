@@ -1,14 +1,17 @@
-import "./App.css";
+import Header from "./Components/Header/Header";
+import Meals from "./Components/Meals/Meals";
+import { AmountContextProvider } from "./Components/store/AmountContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-    </div>
+    <>
+      <AmountContextProvider>
+        <Header />
+        <main>
+          <Meals />
+        </main>
+      </AmountContextProvider>
+    </>
   );
 }
 
