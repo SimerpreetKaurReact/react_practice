@@ -7,6 +7,11 @@ class Users extends React.Component {
       showUser: true,
     };
   }
+  componentDidUpdate() {
+    if (this.props.users.length === 0) {
+      throw new Error("something happened");
+    }
+  }
   handleClick = () => {
     this.setState((prevState) => ({ showUser: !prevState.showUser }));
   };
