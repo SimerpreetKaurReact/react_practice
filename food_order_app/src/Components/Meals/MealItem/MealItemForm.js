@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import AmountContext from "../../store/AmountContext";
 import Input from "../../UI/Input/Input";
 import classes from "./MealItemForm.module.css";
+
 function MealItemForm(props) {
   const { id } = props;
   const { quanityList, onIncrease, onDecrease, onChange } =

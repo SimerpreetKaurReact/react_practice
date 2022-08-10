@@ -18,7 +18,7 @@ const emailReducer = (state, action) => {
   } else if (action.type === "INPUT_BLUR") {
     return { value: state.value, isValid: state.value.includes("@") };
   }
-  ///state.value gives absolute last snapshot of state
+  ///state.value gives ab solute last snapshot of state
   return { value: "", isValid: false };
 };
 const passwordReducer = (state, action) => {
@@ -50,6 +50,7 @@ export default function Login() {
   });
   const { isValid: emailIsValid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
+  ///whenever just the value changes the effect wont run, ie when we pass the specific properties instead of the whole objecy
   useEffect(() => {
     const identifier = setTimeout(() => {
       console.log("useEffect running");
