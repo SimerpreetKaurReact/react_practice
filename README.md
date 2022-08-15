@@ -21,6 +21,8 @@ a)React schedules all state changes, order of state change is kept, but still up
 b) State scheduling is batched if multiple state changes are occuring without any promise/then in between
 //props for configuration
 //context for state mangament across componenets
+//Reducers must be pure,side-effect free, synchronous functions
 
 1. react context is not optimized for high frequency changes
 2. UseEffect with empty array runs after the component was rendered for the first time
+   //lean component, fat reducers without async code
